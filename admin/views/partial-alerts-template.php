@@ -28,11 +28,17 @@ if ( ! function_exists( '_yoast_display_alerts' ) ) {
 
 			switch ( $status ) {
 				case 'active':
-					$button = sprintf( '<button type="button" class="button dismiss"><span class="screen-reader-text">%1$s</span><span class="dashicons dashicons-no-alt"></span></button>', esc_html__( 'Dismiss this item.', 'wordpress-seo' ) );
+					$button = sprintf(
+						'<button type="button" class="button dismiss"><span class="screen-reader-text">%1$s</span><span class="dashicons dashicons-no-alt"></span></button>',
+						esc_html__( 'Dismiss this item.', 'wordpress-seo' )
+					);
 					break;
 
 				case 'dismissed':
-					$button = sprintf( '<button type="button" class="button restore"><span class="screen-reader-text">%1$s</span><span class="dashicons dashicons-hidden"></span></button>', esc_html__( 'Restore this item.', 'wordpress-seo' ) );
+					$button = sprintf(
+						'<button type="button" class="button restore"><span class="screen-reader-text">%1$s</span><span class="dashicons dashicons-hidden"></span></button>',
+						esc_html__( 'Restore this item.', 'wordpress-seo' )
+					);
 					break;
 			}
 
@@ -41,7 +47,9 @@ if ( ! function_exists( '_yoast_display_alerts' ) ) {
 				esc_attr( $notification->get_id() ),
 				esc_attr( $notification->get_nonce() ),
 				esc_attr( $notification->get_json() ),
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $notification can only be an instance of Yoast_Notification; this uses `render`, which is properly escaped.
 				$notification,
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $button is properly escaped.
 				$button
 			);
 		}
