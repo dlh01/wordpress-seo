@@ -22,7 +22,7 @@ class Dependency_Management_Test extends TestCase {
 	public function test_ensure_class_alias() {
 		$instance = $this
 			->getMockBuilder( '\Yoast\WP\Free\Config\Dependency_Management' )
-			->setMethods( array( 'prefixed_available', 'class_exists', 'class_alias' ) )
+			->setMethods( [ 'prefixed_available', 'class_exists', 'class_alias' ] )
 			->getMock();
 
 		$instance
@@ -53,7 +53,7 @@ class Dependency_Management_Test extends TestCase {
 	public function test_ensure_class_alias_unrelated_class() {
 		$instance = $this
 			->getMockBuilder( '\Yoast\WP\Free\Config\Dependency_Management' )
-			->setMethods( array( 'prefixed_available', 'class_exists', 'class_alias' ) )
+			->setMethods( [ 'prefixed_available', 'class_exists', 'class_alias' ] )
 			->getMock();
 
 		$instance
@@ -80,7 +80,7 @@ class Dependency_Management_Test extends TestCase {
 	public function test_ensure_class_alias_prefix_available() {
 		$instance = $this
 			->getMockBuilder( '\Yoast\WP\Free\Config\Dependency_Management' )
-			->setMethods( array( 'prefixed_available', 'class_exists', 'class_alias' ) )
+			->setMethods( [ 'prefixed_available', 'class_exists', 'class_alias' ] )
 			->getMock();
 
 		$instance
@@ -108,7 +108,7 @@ class Dependency_Management_Test extends TestCase {
 	public function test_ensure_class_alias_base_class_does_not_exist() {
 		$instance = $this
 			->getMockBuilder( '\Yoast\WP\Free\Config\Dependency_Management' )
-			->setMethods( array( 'prefixed_available', 'class_exists', 'class_alias' ) )
+			->setMethods( [ 'prefixed_available', 'class_exists', 'class_alias' ] )
 			->getMock();
 
 		$instance
@@ -141,6 +141,6 @@ class Dependency_Management_Test extends TestCase {
 
 		$registered_autoloaders = \spl_autoload_functions();
 
-		$this->assertContains( array( $instance, 'ensure_class_alias' ), $registered_autoloaders );
+		$this->assertContains( [ $instance, 'ensure_class_alias' ], $registered_autoloaders );
 	}
 }
